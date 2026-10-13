@@ -1,0 +1,92 @@
+[
+  {
+    "id": "g001",
+    "query": "Propose a zero‑human LLM pipeline to grade UPSC mains via rubric and question parsing.",
+    "ideal_answer": "**Zero‑Human LLM Grading Pipeline for UPSC Mains**\n\n1. **Question & Rubric Extraction**  \n   - Parse the UPSC mains prompt to isolate the *question* text.  \n   - Retrieve the corresponding *evaluation rubric* (marks distribution, key points, language criteria).\n\n2. **Prompt Construction**  \n   - Build a single instruction for the LLM:  \n     > “You are grading a UPSC mains answer against the provided rubric.”  \n   - Append the extracted *question*, the *rubric*, and the *candidate answer*.\n\n3. **LLM Evaluation**  \n   - Run the prompt through a capable LLM (e.g., GPT‑4‑Turbo).  \n   - The model returns a structured output:  \n     - **Score per rubric dimension** (content, analysis, expression, etc.)  \n     - **Overall mark** (scaled to the UPSC total)  \n     - Optional brief feedback.\n\n4. **Post‑Processing**  \n   - Aggregate dimension scores into the final mark.  \n   - Store the result in a database for analytics.\n\n5. **Calibration (one‑off, optional)**  \n   - Compare a small sample of LLM grades with human‑graded answers to fine‑tune prompt wording or temperature; after calibration, no further human involvement is needed.\n\n**Result:** A fully automated pipeline that *parses the question*, *applies the rubric*, and *uses an LLM as the sole evaluator*, eliminating human grading costs.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g002",
+    "query": "How does MM LU PRO improve upon MM LU's flaws, and what changes were made?",
+    "ideal_answer": "MM LU PRO is a direct upgrade of the original MM LU benchmark that addresses the shortcomings that caused MM LU to become “saturated.”  \n\n**Key ways it improves on MM LU’s flaws**\n\n| Flaw in MM LU | How MM LU PRO fixes it |\n|---------------|------------------------|\n| **Saturation – models quickly reach ceiling performance** | Shifts focus from sheer breadth of tasks to **depth**, using more challenging, nuanced questions that probe deeper reasoning. |\n| **Benchmarking on synthetic or narrow tasks** | Replaces many synthetic items with **real‑exam questions** (e.g., standardized tests), turning existing exams into the benchmark itself. |\n| **Limited problem coverage** | Expands and refines the problem set to cover the gaps identified in the original benchmark. |\n| **Evaluation not reflecting real‑world difficulty** | Introduces harder, more diverse items and tighter scoring criteria to better differentiate advanced models. |\n\n**Concrete changes made**\n\n1. **Re‑designed task set** – Instead of the original broad, shallow set, MM LU PRO presents deeper, more complex problems drawn from actual exams.  \n2. **Problem‑level fixes** – Specific issues (ambiguous wording, trivial shortcuts, data leakage) identified in MM LU were corrected or removed.  \n3. **Improved scoring** – Scoring now rewards nuanced understanding and penalizes superficial guessing, preventing models from “gaming” the benchmark.  \n4. **Tagline** – Marketed as “MM LU Rebuilt to fix its flaws,” emphasizing that the new version is a cleaned‑up, more robust iteration.\n\nIn short, MM LU PRO retains the spirit of the original benchmark but **rebuilds it with deeper, exam‑based tasks, corrected problem statements, and stricter evaluation** to overcome the saturation and other weaknesses of MM LU.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g003",
+    "query": "Link Truthful QA’s reliability tests to its 2021 debut and the preceding 2020 benchmark.",
+    "ideal_answer": "Truthful QA, which focused on testing LLM reliability, was introduced in 2021. It followed the prior benchmark that was released in 2020. The 2020 benchmark set the stage, and Truthful QA built on it by specifically evaluating the reliability of language models.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g004",
+    "query": "Why are single, human‑marketing, domain‑specific, or multi‑benchmark cost/latency LLM leaderboards insufficient?",
+    "ideal_answer": "Single‑benchmark leaderboards only test one task, so they miss how a model performs across the many skills needed in real‑world use.  \nHuman‑marketing (human‑based) leaderboards are driven by hype and subjective judgments, making them easy to cherry‑pick for publicity rather than give an objective picture.  \nDomain‑specific leaderboards are useful only for a narrow application; they don’t tell you whether the model will generalise outside that niche.  \nEven multi‑benchmark leaderboards that add cost and latency still focus on a limited set of metrics and can be gamed; they ignore other crucial factors such as robustness, fairness, safety, and long‑term maintenance.  \n\nThus, each type gives an incomplete, potentially biased view of a model’s true capabilities, and you shouldn’t rely on any single leaderboard without deeper analysis.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g005",
+    "query": "How does Truthful QA (2020) differ from MMLU in testing reliability versus knowledge breadth?",
+    "ideal_answer": "Truthful QA (2020) is a reliability benchmark: it presents each question with a correct answer and a plausible wrong answer and measures whether the model selects the true response. In contrast, MMLU evaluates the **breadth of knowledge**, testing how much factual information a model knows across many domains. Thus, Truthful QA gauges truthfulness/ reliability, while MMLU gauges overall knowledge coverage.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g006",
+    "query": "Examine how answer relevance quantifies question‑answer alignment within RAG architectures.",
+    "ideal_answer": "Answer relevance measures the degree to which a generated answer directly addresses the posed question. In a RAG pipeline, this metric checks the **relation between answer and question**—i.e., whether the answer is relevant for the question—independent of whether the content came from the retrieved context (faithfulness). By quantifying this alignment, answer relevance helps verify that the RAG system not only pulls factual information but also produces responses that correctly answer the user’s query, confirming the pipeline is functioning properly.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g007",
+    "query": "What is LLMs' first measured capability and how does MMLU assess cross‑subject factual recall?",
+    "ideal_answer": "The first capability measured for an LLM is **its factual knowledge recall** (the “knowledge” part of the knowledge‑and‑reasoning pair).  \n\nThe **MMLU** (Massive Multitask Language Understanding) benchmark assesses this by testing the model on **57 different subjects**—including biology, physics, chemistry, history, etc.—and checking how accurately it answers basic factual questions in each domain. This cross‑subject evaluation reveals how well the LLM can retrieve factual information across a wide range of topics.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g008",
+    "query": "Compare using Rack chart chatbot faithfulness checks vs other methods for estimating online eval quality?",
+    "ideal_answer": "**Rack‑chart chatbot faithfulness checks**  \n- **What it measures:** Whether a response is generated from the given context (faithfulness), without needing a reference answer.  \n- **How it works:** The chatbot inspects the context and flags answers that stray from it.  \n- **Pros:** Fast, automated, no reference needed; directly captures a key aspect of online‑eval quality (staying on‑topic).  \n- **Cons:** Only tests faithfulness; it doesn’t assess other dimensions such as relevance, completeness, fluency, or overall usefulness.\n\n**Other common online‑eval quality methods**  \n- **Reference‑based metrics (BLEU, ROUGE, etc.):** Compare the model output to a gold‑standard answer. Good for measuring similarity but require high‑quality references.  \n- **Human judgments:** Annotators rate answers on multiple criteria (accuracy, relevance, coherence). Very reliable but costly and slow.  \n- **Statistical or proxy metrics (log‑probability, click‑through rates):** Infer quality from model confidence or user behavior; indirect and may be noisy.\n\n**Comparison**  \n- **Speed & scalability:** Rack‑chart faithfulness checks are quicker and fully automated, whereas reference‑based and human methods are slower and resource‑intensive.  \n- **Coverage of quality dimensions:** Rack‑chart focuses narrowly on faithfulness; other methods can capture a broader set of quality aspects.  \n- **Dependency on ground truth:** Rack‑chart needs only the context, while reference‑based metrics require correct answers and human evaluation needs annotators.  \n\n**Bottom line:** Use Rack‑chart faithfulness checks for rapid, context‑anchored validation of online outputs, and complement them with other metrics or human reviews to evaluate the full spectrum of answer quality.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g009",
+    "query": "If CI rejects regressions, how does an evaluation suite gate deployments to improve baseline?",
+    "ideal_answer": "The evaluation suite is run by CI as a regression‑testing gate. It measures the new build against the current baseline; if the metrics show an improvement, CI marks the build as passing and the deployment proceeds. If the new build’s metrics are worse (a regression), the suite fails, CI rejects the change, and the deployment is blocked. This way only changes that raise the baseline are allowed to be deployed.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g010",
+    "query": "How does the retriever's immediate vector‑DB lookup differ from the pipeline's programmatic eval method?",
+    "ideal_answer": "The retriever simply performs an **instant lookup in the vector‑DB** as soon as a question arrives, pulling the most relevant documents. In contrast, the pipeline’s **programmatic eval method** is a deterministic, code‑driven evaluation step that runs custom logic to assess the component’s performance—not just fetch data. Thus, the retriever’s job is fast data retrieval, while the programmatic eval is a controlled, scripted assessment of that retrieval (and other) behavior.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g011",
+    "query": "Analyze inter‑rater reliability to resolve rubric ambiguity and compute mean helpfulness score.",
+    "ideal_answer": "**How to proceed**\n\n1. **Check inter‑rater reliability**  \n   - If you have more than one grader, compare their scores for the same items (e.g., using Cohen’s κ or percent agreement).  \n   - **High agreement** → the rubric is clear.  \n   - **Low agreement** → the rubric is ambiguous; revise the criteria until graders converge.\n\n2. **Compute the mean helpfulness score**  \n   - With a single human grader (as assumed here), simply average the marks you receive.  \n   - Example: if the grader gave you four marks (4, 4, 4, 4), the mean helpfulness score = (4 + 4 + 4 + 4) / 4 = **4**.\n\n**Bottom line:** Use inter‑rater reliability to detect rubric ambiguity, then take the average of the (single‑grader) marks to obtain the helpfulness score.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g012",
+    "query": "Examine MMLU saturation: how flawed items cap scores at ~92 %.",
+    "ideal_answer": "MMLU scores top out around 92‑93 % because roughly 6.5 % of its items are flawed—either the provided answer is incorrect or the correct answer isn’t among the choices. Since those questions can’t be answered correctly, even perfect models are capped at the remaining ≈ 93 % of valid items, making higher scores impossible and leading to the benchmark’s saturation.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g013",
+    "query": "Imagine deploying the grader live with no human scores—how might you still assess its correctness?",
+    "ideal_answer": "Even without live human scores you can still gauge correctness by **comparing the grader’s output to a trusted reference** that you obtain intermittently:\n\n1. **Sample‑and‑review** – periodically select a random subset of live answers and have humans score them. The grader’s marks on those samples give an empirical estimate of how close it is to human judgment.\n\n2. **Historical benchmark** – run the grader on a held‑out test set that already has human scores. If its performance on that set remains stable, you can assume it is still behaving similarly on new data.\n\n3. **Consistency checks** – monitor internal signals such as score distribution drift, unusually high confidence, or large deviations from past patterns. Sudden shifts may indicate a loss of correctness.\n\n4. **A/B testing** – deploy two versions (e.g., current grader vs. a baseline) and compare downstream metrics (e.g., downstream task performance, user satisfaction). If the new grader does not degrade these metrics, it is likely still correct.\n\nBy **periodically anchoring** the live system to human‑scored samples or trusted benchmarks, you can continuously estimate how close the grader’s marks are to what a human would give, even when most live answers lack human scores. This aligns with the definition of correctness in the context: “the marks that your system is giving are close to the marks given by the human.”",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g014",
+    "query": "How to import 2008‑2024 Kaggle IPL data, create 30‑50 Q‑SQL golden set, and pick model?",
+    "ideal_answer": "**Step 1 – Import the IPL data (2008‑2024)**\n1. Download the “IPL complete dataset” from Kaggle.  \n2. Unzip the CSV files.  \n3. Load them into a relational DB (e.g., PostgreSQL, MySQL, SQLite) with a simple `COPY`/`LOAD DATA` command, e.g.:  \n\n```sql\nCREATE TABLE ipl_matches ( … );   -- define columns matching the CSV\nCOPY ipl_matches FROM '/path/to/ipl_matches.csv' DELIMITER ',' CSV HEADER;\n```\n\n**Step 2 – Build the “golden” Q‑SQL set (30‑50 questions)**\n1. Draft 30‑50 realistic business‑logic questions, e.g.:  \n   * “How many IPL matches were played from 2018 to 2022?”  \n   * “Which player scored the most runs in 2021?”  \n2. Write the exact SQL query that answers each question against the imported tables.  \n3. Store each pair in a table, e.g.:  \n\n```sql\nCREATE TABLE golden_set (\n    q_id   SERIAL PRIMARY KEY,\n    question TEXT,\n    sql_query TEXT\n);\nINSERT INTO golden_set (question, sql_query) VALUES\n('How many IPL matches were played from 2018 to 2022?', \n 'SELECT COUNT(*) FROM ipl_matches WHERE season BETWEEN 2018 AND 2022;'),\n...\n;\n```\n\n**Step 3 – Evaluate the 5 candidate models**\n1. For each model, feed the same question set and let it generate SQL.  \n2. Execute the generated SQL on the DB and compare the result with the golden set’s expected answer (exact match or tolerance).  \n3. Record metrics (accuracy, execution time, error rate).  \n\n**Step 4 – Pick the best model**\n- Choose the model with the highest accuracy (or best trade‑off between accuracy and latency) on the golden set.  \n- Optionally run a final validation on a held‑out subset of questions to confirm selection.\n\nThat’s the complete flow: import Kaggle IPL data → create a 30‑50 Q‑SQL golden dataset → run all five models on it → select the top‑performing model.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g015",
+    "query": "Imagine testing our LLM on GSM‑8K vs SWE; how could question count mislead performance?",
+    "ideal_answer": "The number of questions in a benchmark can give a false sense of how well the model actually performs.  \n\n- **GSM‑8K** contains ≈ 8 000–8 500 questions, so a single error changes the overall score by only ~0.01 %. A model can look strong even if it fails on many specific problem types, because the large pool masks those weaknesses.  \n\n- **SWE** has only 163 GitHub‑issue questions. Here each mistake shifts the score by ~0.6 %, so the metric is far more sensitive to a few outliers. A high score may reflect success on a narrow set of tasks rather than general capability, while a low score could be driven by a handful of unusually hard items.  \n\nThus, comparing performance across benchmarks with vastly different question counts can be misleading: a higher accuracy on a large benchmark doesn’t necessarily mean the model is better, and a lower accuracy on a small benchmark may overstate its deficiencies. The raw count, not just the percentage, must be considered when interpreting results.",
+    "source": "TODO-verify"
+  }
+]
