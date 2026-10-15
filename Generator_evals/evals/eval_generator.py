@@ -120,3 +120,10 @@ metrics = [
 
 # 4. EVALUATE --- runs the metrics on every case, prints a report
 result = evaluate(test_cases=test_cases, metrics=metrics)
+
+
+
+
+### How to get a good Generator Evaluation
+# 1) Giving a good,efficient system prompt  - > may be increase in Answer Relevance 
+# 2) Also Use a good , standard LLM Model for your generator which may be varies by diff task.
