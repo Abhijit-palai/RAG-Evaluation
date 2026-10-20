@@ -122,6 +122,9 @@ result = evaluate(test_cases=test_cases, metrics=[correctness, completeness, sty
 # ->  set rubric for a particular case statement
 # -> read the reasons of the test fail case which are fails why fails?? find the common pattern why these particular tests are fails , then try to improve correctness.
 # -> always try to provides evaluation_steps and rubric by your own for a better result because LLM may be change the rubric in each run of pipeline.
-# -> Most of the control keep by your own. don't give more control to LLM else the score varies more.
+# -> Most of the control keep by your own. don't give more control to LLM else the score varies more. controls means give a fully explained , efficient Prompt.
 # in first run :- 0.84 score(correctness)
 # in second run :- 0.83 ==> can't varies more in score due to all control take by human.
+
+
+
