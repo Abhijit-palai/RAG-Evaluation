@@ -13,7 +13,7 @@ class RerankingRetriever:
         self.fetch_k = fetch_k   # how many the bi-encoder brings back (over-retrieve)
         self.top_k = top_k       # how many survive after reranking
 
-    @traceable(run_type="retriever", name="RerankingRetriever")
+    #@traceable(run_type="retriever", name="RerankingRetriever") # For tracing the proper block of code via langsmith.
     def invoke(self, query):
         # 1. OVER-RETRIEVE: fast bi-encoder, deliberately more than we need
         candidates = self.store.similarity_search(query, k=self.fetch_k)
